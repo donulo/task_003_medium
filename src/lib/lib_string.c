@@ -15,11 +15,14 @@ char* readString(FILE* stream) {
     while ((ch = fgetc(stream)) == '\n' || ch == ' ')
         ;
     while (ch != '\n' && ch != ' ' && ch != '\0' && (int)(ch) != EOF) {
-        string = realloc(string, ((++count) + 1) * sizeof(char));
-        if (string == NULL) exception("Puck you, Verter!");
-        string[count - 1] = ch;
-        ch = fgetc(stream);
+        string = realloc(string, (++count + 1) * sizeof(char));
+        if (string == NULL)
+            exception("Puck you, Verter!");
+        else {
+            string[count - 1] = ch;
+            ch = fgetc(stream);
+        }
     }
-    string[count] = '\0';
+    if (string != NULL) string[count] = '\0';
     return string;
 }
