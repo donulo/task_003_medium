@@ -1,7 +1,5 @@
 #include "lib_string.h"
 
-#include "misc.h"
-
 char* copyString(char* path) {
     char* result = calloc(strlen(path), sizeof(char));
     strcpy(result, path);
@@ -16,9 +14,7 @@ char* readString(FILE* stream) {
         ;
     while (ch != '\n' && ch != ' ' && ch != '\0' && (int)(ch) != EOF) {
         string = realloc(string, (++count + 1) * sizeof(char));
-        if (string == NULL)
-            exception("Puck you, Verter!");
-        else {
+        if (string != NULL) {
             string[count - 1] = ch;
             ch = fgetc(stream);
         }

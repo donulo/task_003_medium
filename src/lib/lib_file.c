@@ -1,9 +1,5 @@
 #include "lib_file.h"
 
-#include <errno.h>
-
-#include "misc.h"
-
 void showFile(char* path) {
     FILE* file;
     file = fopen(path, "a+");
